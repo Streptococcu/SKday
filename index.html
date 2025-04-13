@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>การ์ดอวยพรวันสงกรานต์</title>
+  <style>
+    body {
+      background-color: #ADD8E6; /* ฟ้าอ่อน */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card {
+      background-color: #FA8072; /* สีแซลมอน */
+      width: 400px;
+      height: 250px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 1.5rem;
+      padding: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      user-select: none;
+      z-index: 10;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 1.5rem;
+      pointer-events: none;
+      animation: fall linear forwards;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" onclick="nextPage()">
+    <div id="cardText">Special for you, Click for ??!! 🎀🎁 </div>
+  </div>
+
+  <script>
+    const pages = [
+      "Special for you, Click for ??!! 🎀🎁",
+      "Surprise 🎉🎉",
+      "Happy Songkran 2025 naa !",
+      "To Beauty kubbb ><",
+      "หวัดดีวันปีใหม่ไทยยย 🌈",
+      "ขอให้ปีนี้เต็มไปด้วยความสุข สุขภาพแข็งแรงทั้งกายและใจ 💪",
+      "คิดอะไรก็ขอให้สมหวังทุกความปรารถนา 🍕",
+      "ได้ทำอะไรตามที่ตั้งใจไว้ ✨ ใช้เวลากะครอบครัวให้เต็มที่",
+      "มีรอยยิ้มแล้วก็เสียงหัวเราะตลอดทั้งปี 🤣😂",
+      "ขอให้สงกรานต์ปีหน้าเราได้อยู่ด้วยกันนะ 🥺🌻",
+      "From PP 😎😎",
+      `<div>
+         <p>ลองแอบๆแสกนดู 👀👀</p>
+         <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://open.spotify.com/embed/track/0RiRZpuVRbi7oqRdSMwhQY?utm_source=generator" alt="QR Code Spotify Embed">
+       </div>`,
+      "Ps. พรุ่งนี้ขับรถดีๆ เดินทางปลอดภัย ถึงละบอกด้วยงับ 🚗"
+    ];
+
+    let currentPage = 0;
+
+    function nextPage() {
+      currentPage = (currentPage + 1) % pages.length;
+      document.getElementById("cardText").innerHTML = pages[currentPage];
+    }
+
+    const emojis = ["🔫", "💧", "🌈", "✨", "🫧", "😸"];
+
+    function createFallingEmoji() {
+      const emoji = document.createElement("div");
+      emoji.classList.add("emoji");
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.animationDuration = 3 + Math.random() * 3 + "s";
+      emoji.style.fontSize = (1 + Math.random() * 2) + "rem";
+
+      document.body.appendChild(emoji);
+
+      setTimeout(() => {
+        emoji.remove();
+      }, 6000);
+    }
+
+    setInterval(createFallingEmoji, 300);
+  </script>
+
+</body>
+</html>
